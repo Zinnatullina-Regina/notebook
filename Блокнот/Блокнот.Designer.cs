@@ -30,7 +30,6 @@ namespace Блокнот
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Блокнот));
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,32 +37,30 @@ namespace Блокнот
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шрифтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменениеЦветаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.изменениеРазмераToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.жирныйШрифтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.курсивToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.самШрифтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.правкаДляРаботыСБуферомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вырезатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.RichTextBox();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 28);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1061, 541);
-            this.textBox1.TabIndex = 0;
-            // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.шрифтToolStripMenuItem,
-            this.справкаToolStripMenuItem});
+            this.справкаToolStripMenuItem,
+            this.правкаДляРаботыСБуферомToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1061, 28);
@@ -84,25 +81,28 @@ namespace Блокнот
             // создатьToolStripMenuItem
             // 
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.создатьToolStripMenuItem.Text = "Создать";
+            this.создатьToolStripMenuItem.Click += new System.EventHandler(this.создатьToolStripMenuItem_Click);
             // 
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
@@ -110,50 +110,76 @@ namespace Блокнот
             // 
             this.шрифтToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.изменениеЦветаToolStripMenuItem,
-            this.изменениеРазмераToolStripMenuItem,
-            this.жирныйШрифтToolStripMenuItem,
-            this.курсивToolStripMenuItem});
+            this.самШрифтToolStripMenuItem});
             this.шрифтToolStripMenuItem.Name = "шрифтToolStripMenuItem";
             this.шрифтToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
             this.шрифтToolStripMenuItem.Text = "Шрифт";
             // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.оПрограммеToolStripMenuItem});
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.справкаToolStripMenuItem.Text = "Справка";
-            // 
             // изменениеЦветаToolStripMenuItem
             // 
             this.изменениеЦветаToolStripMenuItem.Name = "изменениеЦветаToolStripMenuItem";
-            this.изменениеЦветаToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
+            this.изменениеЦветаToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.изменениеЦветаToolStripMenuItem.Text = " Изменение цвета";
+            this.изменениеЦветаToolStripMenuItem.Click += new System.EventHandler(this.изменениеЦветаToolStripMenuItem_Click);
             // 
-            // изменениеРазмераToolStripMenuItem
+            // самШрифтToolStripMenuItem
             // 
-            this.изменениеРазмераToolStripMenuItem.Name = "изменениеРазмераToolStripMenuItem";
-            this.изменениеРазмераToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
-            this.изменениеРазмераToolStripMenuItem.Text = "Изменение размера";
+            this.самШрифтToolStripMenuItem.Name = "самШрифтToolStripMenuItem";
+            this.самШрифтToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.самШрифтToolStripMenuItem.Text = "Сам шрифт";
+            this.самШрифтToolStripMenuItem.Click += new System.EventHandler(this.самШрифтToolStripMenuItem_Click);
             // 
-            // жирныйШрифтToolStripMenuItem
-            // 
-            this.жирныйШрифтToolStripMenuItem.Name = "жирныйШрифтToolStripMenuItem";
-            this.жирныйШрифтToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
-            this.жирныйШрифтToolStripMenuItem.Text = "Жирный шрифт";
-            // 
-            // курсивToolStripMenuItem
-            // 
-            this.курсивToolStripMenuItem.Name = "курсивToolStripMenuItem";
-            this.курсивToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
-            this.курсивToolStripMenuItem.Text = "Курсив";
+            // справкаToolStripMenuItem
+            
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            // 
+            // правкаДляРаботыСБуферомToolStripMenuItem
+            // 
+            this.правкаДляРаботыСБуферомToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.копироватьToolStripMenuItem,
+            this.вырезатьToolStripMenuItem,
+            this.вставитьToolStripMenuItem});
+            this.правкаДляРаботыСБуферомToolStripMenuItem.Name = "правкаДляРаботыСБуферомToolStripMenuItem";
+            this.правкаДляРаботыСБуферомToolStripMenuItem.Size = new System.Drawing.Size(236, 24);
+            this.правкаДляРаботыСБуферомToolStripMenuItem.Text = "Правка для работы с буфером";
+            // 
+            // копироватьToolStripMenuItem
+            // 
+            this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
+            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            this.копироватьToolStripMenuItem.Text = "Копировать";
+            this.копироватьToolStripMenuItem.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
+            // 
+            // вырезатьToolStripMenuItem
+            // 
+            this.вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
+            this.вырезатьToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            this.вырезатьToolStripMenuItem.Text = "Вырезать";
+            this.вырезатьToolStripMenuItem.Click += new System.EventHandler(this.вырезатьToolStripMenuItem_Click);
+            // 
+            // вставитьToolStripMenuItem
+            // 
+            this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            this.вставитьToolStripMenuItem.Text = "Вставить";
+            this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.ForeColor = System.Drawing.Color.Red;
+            this.textBox1.Location = new System.Drawing.Point(0, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1061, 541);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "";
             // 
             // Блокнот
             // 
@@ -163,9 +189,11 @@ namespace Блокнот
             this.ClientSize = new System.Drawing.Size(1061, 569);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Блокнот";
             this.Text = "Блокнот";
+            this.Load += new System.EventHandler(this.Блокнот_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -174,8 +202,6 @@ namespace Блокнот
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
@@ -185,10 +211,15 @@ namespace Блокнот
         private System.Windows.Forms.ToolStripMenuItem шрифтToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменениеЦветаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem изменениеРазмераToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem жирныйШрифтToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem курсивToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem правкаДляРаботыСБуферомToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вырезатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox textBox1;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.ToolStripMenuItem самШрифтToolStripMenuItem;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 
